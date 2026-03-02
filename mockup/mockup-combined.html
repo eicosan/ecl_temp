@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eirini C. Lika LL.M — International Boutique Law Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* DESIGN TOKENS — 3 themes × 2 modes */
+[data-theme="navy-gold"][data-mode="dark"]{
+  --bg-hero:#0a1628;--bg-alt:#132240;--bg-light:#f5f0e8;--bg-light-alt:#ebe5d8;
+  --accent:#a39541;--accent-light:#b5a95c;--accent-muted:rgba(163,149,65,0.3);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(10,22,40,0.95);--nav-text:rgba(255,255,255,0.7);--nav-text-hover:#fff;
+  --txt:#fff;--txt-sub:rgba(255,255,255,0.7);--txt-muted:rgba(255,255,255,0.5);
+  --on-light:#1a1a1a;--on-light-sub:#4a4a4a;
+  --border:rgba(255,255,255,0.08);--border-light:rgba(163,149,65,0.25);
+  --card-bg:#132240;--card-border:rgba(255,255,255,0.08);
+}
+[data-theme="navy-gold"][data-mode="light"]{
+  --bg-hero:#f5f0e8;--bg-alt:#0a1628;--bg-light:#fff;--bg-light-alt:#f5f0e8;
+  --accent:#a39541;--accent-light:#8a7d35;--accent-muted:rgba(163,149,65,0.25);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(245,240,232,0.95);--nav-text:#1a1a1a;--nav-text-hover:#000;
+  --txt:#1a1a1a;--txt-sub:#4a4a4a;--txt-muted:rgba(0,0,0,0.4);
+  --on-light:#1a1a1a;--on-light-sub:#4a4a4a;
+  --border:rgba(255,255,255,0.08);--border-light:rgba(163,149,65,0.25);
+  --card-bg:#132240;--card-border:rgba(255,255,255,0.08);
+}
+[data-theme="olive-black"][data-mode="dark"]{
+  --bg-hero:#111;--bg-alt:#1a1a1a;--bg-light:#f4f2ed;--bg-light-alt:#e5e1d8;
+  --accent:#6B705C;--accent-light:#7d826e;--accent-muted:rgba(107,112,92,0.3);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(17,17,17,0.95);--nav-text:rgba(255,255,255,0.7);--nav-text-hover:#fff;
+  --txt:#fff;--txt-sub:rgba(255,255,255,0.72);--txt-muted:rgba(255,255,255,0.5);
+  --on-light:#111;--on-light-sub:#3d3d3d;
+  --border:rgba(255,255,255,0.08);--border-light:rgba(107,112,92,0.3);
+  --card-bg:#1a1a1a;--card-border:rgba(255,255,255,0.08);
+}
+[data-theme="olive-black"][data-mode="light"]{
+  --bg-hero:#f4f2ed;--bg-alt:#111;--bg-light:#fff;--bg-light-alt:#f4f2ed;
+  --accent:#6B705C;--accent-light:#555a48;--accent-muted:rgba(107,112,92,0.25);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(244,242,237,0.95);--nav-text:#111;--nav-text-hover:#000;
+  --txt:#111;--txt-sub:#3d3d3d;--txt-muted:rgba(0,0,0,0.4);
+  --on-light:#111;--on-light-sub:#3d3d3d;
+  --border:rgba(255,255,255,0.08);--border-light:rgba(107,112,92,0.3);
+  --card-bg:#1a1a1a;--card-border:rgba(255,255,255,0.08);
+}
+[data-theme="navy-olive"][data-mode="dark"]{
+  --bg-hero:#0a1628;--bg-alt:#132240;--bg-light:#f4f2ed;--bg-light-alt:#e5e1d8;
+  --accent:#5E6B2F;--accent-light:#728539;--accent-muted:rgba(94,107,47,0.3);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(10,22,40,0.95);--nav-text:rgba(255,255,255,0.7);--nav-text-hover:#fff;
+  --txt:#fff;--txt-sub:rgba(255,255,255,0.7);--txt-muted:rgba(255,255,255,0.5);
+  --on-light:#1a1a1a;--on-light-sub:#3d3d3d;
+  --border:rgba(255,255,255,0.08);--border-light:rgba(94,107,47,0.3);
+  --card-bg:#132240;--card-border:rgba(255,255,255,0.08);
+}
+[data-theme="navy-olive"][data-mode="light"]{
+  --bg-hero:#f4f2ed;--bg-alt:#0a1628;--bg-light:#fff;--bg-light-alt:#f4f2ed;
+  --accent:#5E6B2F;--accent-light:#4a5524;--accent-muted:rgba(94,107,47,0.25);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(244,242,237,0.95);--nav-text:#1a1a1a;--nav-text-hover:#000;
+  --txt:#1a1a1a;--txt-sub:#4a4a4a;--txt-muted:rgba(0,0,0,0.4);
+  --on-light:#1a1a1a;--on-light-sub:#3d3d3d;
+  --border:rgba(255,255,255,0.08);--border-light:rgba(94,107,47,0.3);
+  --card-bg:#132240;--card-border:rgba(255,255,255,0.08);
+}
+
+/* BASE */
+:root{--fh:'Cormorant Garamond',Georgia,serif;--fb:'Outfit',system-ui,sans-serif;--mw:1200px;--nh:80px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--fb);background:var(--bg-hero);line-height:1.6;overflow-x:hidden}
+body,body *{transition:background-color .45s,color .45s,border-color .45s}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:var(--fh);font-weight:400;line-height:1.15}
+h1{font-size:clamp(2.5rem,5vw,4.2rem)}h2{font-size:clamp(2rem,3.5vw,3rem)}h3{font-size:clamp(1.4rem,2vw,1.8rem)}
+.lbl{font-family:var(--fb);font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.div{width:48px;height:2px;background:var(--accent);margin:1.5rem 0}.div-c{margin-left:auto;margin-right:auto}
+.cta{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--fb);font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.cta:hover{gap:1.1rem}.cta svg{width:24px;height:24px;stroke:var(--accent);stroke-width:1.5;fill:none}
+.arr{width:16px;height:16px;stroke:var(--accent);stroke-width:1.5;fill:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nh);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:var(--nav-bg);transition:background .4s,border-color .4s}
+.nav.scrolled{background:var(--nav-bg-scroll);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(128,128,128,.1)}
+[data-mode="light"] .nav{background:var(--nav-bg-scroll);border-bottom:1px solid rgba(0,0,0,.06)}
+.nav-logo img{height:56px;width:auto}
+.nav-logo .l-dk{display:block}.nav-logo .l-lt{display:none}
+[data-mode="light"] .nav-logo .l-dk{display:none}[data-mode="light"] .nav-logo .l-lt{display:block}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--nav-text);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s}
+.nav-links a:hover{color:var(--nav-text-hover)}.nav-links a:hover::after{width:100%}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--bg-hero);position:relative}
+.hero-c{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem;max-width:640px;margin-left:auto}
+.hero .lbl{margin-bottom:1.5rem}
+.hero h1{color:var(--txt);margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{color:var(--txt-sub);font-size:1rem;line-height:1.7;max-width:480px}
+.hero .cta{margin-top:2.5rem}
+.hero-img{position:relative;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;will-change:transform;transform:scale(1.05)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,transparent 60%,var(--bg-hero));pointer-events:none}
+
+/* ABOUT */
+.s-about{background:var(--bg-hero);padding:8rem 4rem}
+.about-g{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}
+.about-g .img img{width:100%;max-width:420px}
+.about-c .lbl{margin-bottom:1rem}
+.about-c h2{color:var(--txt);font-style:italic;margin-bottom:1.5rem}
+.about-c p{color:var(--txt-sub);font-size:.95rem;line-height:1.8;margin-bottom:1rem}
+.about-c .cta{margin-top:2.5rem}
+.about-c strong{color:var(--accent);font-weight:500}
+
+/* SERVICES */
+.s-svc{background:var(--bg-alt);padding:8rem 4rem}
+.s-svc .sh{max-width:var(--mw);margin:0 auto 4rem}.s-svc .lbl{margin-bottom:1rem}.s-svc h2{color:#fff;font-style:italic;max-width:600px}
+.svc-g{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.sc{padding:2.5rem;border:1px solid var(--card-border);background:var(--card-bg);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--accent);transition:width .5s cubic-bezier(.25,.46,.45,.94)}
+.sc:hover::before{width:100%}.sc:hover{border-color:var(--accent-muted);background:rgba(255,255,255,.03)}
+.sc .n{font-size:.75rem;color:var(--accent);letter-spacing:.1em;margin-bottom:1.5rem}
+.sc h3{color:#fff;margin-bottom:1rem}.sc p{color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.6;flex:1}
+.sc .cl{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}.sc .cl:hover{gap:.8rem}
+
+/* JURISDICTIONS */
+.s-jur{background:var(--bg-light);padding:8rem 4rem;text-align:center}
+.s-jur .lbl{margin-bottom:1rem}.s-jur h2{color:var(--on-light);font-style:italic;margin-bottom:1rem}
+.s-jur .sub{color:var(--on-light-sub);font-size:.95rem;max-width:580px;margin:0 auto 4rem}
+.jur-g{max-width:900px;margin:0 auto 6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:4rem}
+.ji h4{color:var(--on-light);margin-bottom:.25rem;font-family:var(--fh);font-size:1.25rem}.ji p{color:var(--on-light-sub);font-size:.85rem}
+.jf{width:48px;height:32px;margin:0 auto 1rem;border-radius:2px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.lng-r{max-width:500px;margin:0 auto;display:flex;justify-content:center;gap:4rem;padding-top:2.5rem;border-top:1px solid var(--bg-light-alt)}
+.lng-c{width:64px;height:64px;border-radius:50%;border:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1.1rem;color:var(--on-light);margin:0 auto .5rem}
+.lng-c:hover{border-color:var(--accent)}.li span{font-size:.85rem;color:var(--on-light-sub)}
+
+/* QUALIFICATIONS — new from mockup #2 */
+.s-qual{background:var(--bg-hero);padding:8rem 4rem}
+.s-qual .sh{max-width:var(--mw);margin:0 auto 4rem;text-align:center}
+.s-qual .lbl{margin-bottom:1rem}.s-qual h2{color:var(--txt);font-style:italic}
+.qual-g{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.qcol h3{color:var(--txt);margin-bottom:1.5rem;font-size:1.4rem;position:relative;padding-bottom:1rem}
+.qcol h3::after{content:'';position:absolute;bottom:0;left:0;width:32px;height:2px;background:var(--accent)}
+.qi{margin-bottom:1.5rem;padding-left:1.5rem;border-left:1px solid var(--accent-muted)}
+.qi .qt{color:var(--txt);font-family:var(--fb);font-size:.9rem;font-weight:500;line-height:1.5}
+.qi .qd{color:var(--txt-sub);font-size:.85rem;line-height:1.5;margin-top:2px}
+
+/* INSIGHTS */
+.s-ins{padding:8rem 4rem}
+[data-mode="dark"] .s-ins{background:var(--bg-hero)}[data-mode="light"] .s-ins{background:var(--bg-light-alt)}
+.s-ins .sh{max-width:var(--mw);margin:0 auto 4rem;display:flex;justify-content:space-between;align-items:flex-end}
+.s-ins .sh div:first-child .lbl{margin-bottom:1rem}
+.s-ins h2{color:var(--txt);font-style:italic}
+.ins-g{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.ic{padding:2.5rem;transition:border-color .3s,background .3s}
+[data-mode="dark"] .ic{border:1px solid var(--border);background:transparent}
+[data-mode="dark"] .ic:hover{border-color:var(--accent-muted);background:rgba(255,255,255,.02)}
+[data-mode="dark"] .ic .cd{color:var(--txt-muted)}[data-mode="dark"] .ic .ct{color:var(--accent);border:1px solid var(--accent-muted)}
+[data-mode="dark"] .ic h3{color:#fff}[data-mode="dark"] .ic p{color:var(--txt-muted)}[data-mode="dark"] .ic .cl{color:var(--accent)}
+[data-mode="light"] .ic{border:1px solid rgba(0,0,0,.08);background:#fff}
+[data-mode="light"] .ic:hover{border-color:var(--accent-muted);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+[data-mode="light"] .ic .cd{color:var(--on-light-sub)}[data-mode="light"] .ic .ct{color:var(--accent);border:1px solid var(--accent-muted)}
+[data-mode="light"] .ic h3{color:var(--on-light)}[data-mode="light"] .ic p{color:var(--on-light-sub)}[data-mode="light"] .ic .cl{color:var(--accent)}
+.ic .cd{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.ic .ct{display:inline-block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;margin-bottom:1.5rem}
+.ic h3{font-size:1.35rem;margin-bottom:1rem;line-height:1.3}.ic p{font-size:.85rem;line-height:1.6;margin-bottom:1.5rem}
+.ic .cl{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase}.ic .cl:hover{gap:.8rem}
+
+/* CONTACT — new from mockup #2 */
+.s-con{background:var(--bg-alt);padding:8rem 4rem}
+.con-g{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.con-i .lbl{margin-bottom:1rem}.con-i h2{color:#fff;font-style:italic;margin-bottom:1.5rem}
+.cdet{margin-bottom:1.5rem}
+.cdet-l{font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px}
+.cdet-v{color:rgba(255,255,255,.7);font-size:.95rem;line-height:1.6}
+.cdet-v a{color:var(--accent);border-bottom:1px solid var(--accent-muted)}.cdet-v a:hover{border-color:var(--accent)}
+.con-f .lbl{margin-bottom:1rem}.con-f h3{color:#fff;margin-bottom:1rem}
+.con-f .fdesc{color:rgba(255,255,255,.5);font-size:.85rem;line-height:1.6;margin-bottom:1.5rem}
+.cf{display:flex;flex-direction:column;gap:1rem}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ff{display:flex;flex-direction:column;gap:4px}
+.ff label{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.ff input,.ff textarea{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:4px;padding:12px 16px;color:#fff;font-family:var(--fb);font-size:.9rem;transition:border-color .3s}
+.ff input:focus,.ff textarea:focus{outline:none;border-color:var(--accent)}.ff textarea{resize:vertical;min-height:120px}
+.fsub{align-self:flex-start;padding:14px 36px;background:var(--accent);color:#fff;border:none;border-radius:4px;font-family:var(--fb);font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:filter .3s,transform .2s}
+.fsub:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.fnote{font-size:.75rem;color:rgba(255,255,255,.5);line-height:1.5;margin-top:.5rem}.fnote a{color:var(--accent)}
+
+/* FOOTER */
+.ft{background:var(--bg-alt);border-top:1px solid var(--border);padding:4rem 4rem 2.5rem}
+.ft-in{max-width:var(--mw);margin:0 auto}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.ft-br{max-width:340px}.ft-br img{height:48px;width:auto;margin-bottom:1rem}.ft-br p{color:rgba(255,255,255,.5);font-size:.8rem;line-height:1.6}
+.ft-nav{display:flex;gap:6rem}
+.ft-col h5{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:1rem}
+.ft-col a{display:block;font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:.5rem}.ft-col a:hover{color:var(--accent)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center}.ft-bot p{color:rgba(255,255,255,.5);font-size:.75rem}
+
+/* DS PANEL */
+.ds-t{position:fixed;bottom:24px;right:24px;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.3)}.ds-t:hover{transform:scale(1.1)}.ds-t svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2}
+.ds-p{position:fixed;bottom:88px;right:24px;z-index:200;width:380px;max-height:75vh;background:#0e1a2e;border:1px solid rgba(255,255,255,.1);border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.5);overflow:hidden;transform:translateY(16px) scale(.95);opacity:0;pointer-events:none;transition:transform .3s cubic-bezier(.25,.46,.45,.94),opacity .3s}
+.ds-p.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+.ds-ph{padding:20px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center}
+.ds-ph h4{font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff}
+.ds-pc{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.5);font-size:1.4rem;padding:4px;line-height:1}
+.ds-pb{padding:20px;overflow-y:auto;max-height:calc(75vh - 60px)}
+.ds-s{margin-bottom:20px}.ds-s h5{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.mt{display:flex;background:rgba(255,255,255,.05);border-radius:8px;padding:3px;gap:2px}
+.mb{flex:1;padding:8px 12px;border:none;border-radius:6px;cursor:pointer;font-family:var(--fb);font-size:.75rem;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.6);background:transparent;transition:all .25s}
+.mb.active{background:rgba(255,255,255,.12);color:#fff}.mb:hover:not(.active){background:rgba(255,255,255,.06)}
+.to{display:flex;flex-direction:column;gap:6px}
+.tb{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;cursor:pointer;font-family:var(--fb)}
+.tb:hover,.tb.active{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06)}.tb.active .tc{opacity:1}
+.tc{color:#a39541;font-size:.8rem;margin-left:auto;opacity:0;transition:opacity .2s}
+.td{display:flex;gap:4px}.tdt{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.15)}
+.tl{font-size:.8rem;color:rgba(255,255,255,.7)}
+.dcr{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.dcs{width:28px;height:28px;border-radius:6px;border:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.dci{display:flex;justify-content:space-between;flex:1}
+.dcn{font-size:.75rem;color:rgba(255,255,255,.7)}.dcv{font-size:.7rem;color:rgba(255,255,255,.4);font-family:monospace}
+.dtr{margin-bottom:8px}.dtm{font-size:.65rem;color:rgba(255,255,255,.4);font-family:monospace}
+
+/* ANIMATIONS */
+@keyframes fiu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.a{opacity:0}.a.v{animation:fiu .8s cubic-bezier(.25,.46,.45,.94) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}.hero-img{height:50vh;order:-1}.hero-c{padding:4rem;max-width:none;margin:0}
+  .about-g,.qual-g,.con-g{grid-template-columns:1fr}.svc-g,.ins-g{grid-template-columns:1fr}
+  .jur-g{grid-template-columns:1fr;gap:2.5rem}.lng-r{flex-wrap:wrap}.fr{grid-template-columns:1fr}
+  .nav-links{display:none}.ft-top{flex-direction:column;gap:2.5rem}.ft-nav{flex-direction:column;gap:2.5rem}
+  .ft-bot{flex-direction:column;gap:1rem;text-align:center}.s-ins .sh{flex-direction:column;align-items:flex-start;gap:1rem}
+  .ds-p{right:12px;left:12px;width:auto}
+}
+</style>
+</head>
+<body data-theme="navy-gold" data-mode="dark">
+
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">
+    <img class="l-dk" src="images/ecl-logo-transparent-light.png" alt="Eirini C. Lika LL.M">
+    <img class="l-lt" src="images/ecl-logo-transparent.png" alt="Eirini C. Lika LL.M">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Über die Kanzlei</a></li>
+    <li><a href="#services">Tätigkeitsbereiche</a></li>
+    <li><a href="#jurisdictions">Rechtsordnungen</a></li>
+    <li><a href="#qualifications">Qualifikationen</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-c">
+    <span class="lbl a v d1">International Boutique Law Practice</span>
+    <h1 class="a v d2">Rechtsberatung an der <em>Schnittstelle</em> der Rechtsordnungen</h1>
+    <p class="a v d3">Internationale Boutique-Kanzlei für grenzüberschreitende Mandate im Wirtschaftsrecht, in der privaten Vorsorge und im IT-Recht.</p>
+    <a href="#contact" class="cta a v d4">Kontakt aufnehmen <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+  <div class="hero-img" id="heroImage">
+    <img src="images/eirini-portrait.png" alt="Eirini C. Lika, LL.M — Rechtsanwältin" loading="eager" id="heroImg">
+  </div>
+</section>
+
+<section class="s-about" id="about">
+  <div class="about-g">
+    <div class="img a"><img src="images/eirini-standing.jpg" alt="Eirini C. Lika" loading="lazy"></div>
+    <div class="about-c">
+      <span class="lbl a">Über die Kanzlei</span>
+      <h2 class="a">Wer ich bin</h2>
+      <div class="div a"></div>
+      <p class="a">Ich bin Eirini C. Lika, LL.M. Ich berate an der Schnittstelle von deutschem, europäischem, britischem und griechischem Recht.</p>
+      <p class="a">Unternehmen begleite ich bei internationalen Vertragsstrukturen und regulatorischer Compliance. Privatpersonen unterstütze ich bei Vorsorgevollmachten und Patientenverfügungen, insbesondere wenn Verträge, Vollmacht oder formelle Wendungen grenzübergreifend verfasst sind.</p>
+      <p class="a">Ein besonderer Schwerpunkt meiner Tätigkeit liegt im Bereich des <strong>KI-Rechts</strong> und der <strong>Tech-Regulierung</strong>.</p>
+      <a href="/about" class="cta a">Mehr erfahren <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="s-svc" id="services">
+  <div class="sh"><span class="lbl a">Tätigkeitsschwerpunkte</span><h2 class="a">Rechtsberatung mit internationalem Fokus</h2></div>
+  <div class="svc-g">
+    <a href="/services/ai-law" class="sc a d1"><div class="n">01</div><h3>KI-Recht &amp; EU AI Act</h3><p>Regulatorische Einordnung, Governance und Compliance-Beratung nach der EU-KI-Verordnung.</p><span class="cl">Mehr erfahren <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    <a href="/services/data-protection" class="sc a d2"><div class="n">02</div><h3>Datenschutz &amp; IT-Recht</h3><p>DSGVO- und UK-DSGVO-Compliance sowie IT-rechtliche Strukturierung.</p><span class="cl">Mehr erfahren <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    <a href="/services/corporate" class="sc a d3"><div class="n">03</div><h3>Gesellschafts- &amp; Wirtschaftsrecht</h3><p>Unternehmensstrukturen und regulatorische Corporate Governance.</p><span class="cl">Mehr erfahren <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    <a href="/services/contracts" class="sc a d1"><div class="n">04</div><h3>Vertragsgestaltung</h3><p>SaaS-, Lizenz- und grenzüberschreitende Wirtschaftsverträge.</p><span class="cl">Mehr erfahren <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    <a href="/services/cross-border" class="sc a d2"><div class="n">05</div><h3>Grenzüberschreitende Rechtsberatung</h3><p>Koordinierte rechtliche Analyse über mehrere Jurisdiktionen hinweg.</p><span class="cl">Mehr erfahren <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    <a href="/services/private-mandates" class="sc a d3"><div class="n">06</div><h3>Private Vorsorge &amp; Patientenverfügungen</h3><p>Rechtssichere Vorsorgestrukturen mit internationalem Bezug.</p><span class="cl">Mehr erfahren <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+  </div>
+</section>
+
+<section class="s-jur" id="jurisdictions">
+  <span class="lbl a">Rechtsordnungen</span>
+  <h2 class="a">Beratung in mehreren Jurisdiktionen</h2>
+  <div class="div div-c a"></div>
+  <p class="sub a">Grenzüberschreitend ausgerichtet – unter Berücksichtigung regulatorischer Rahmenbedingungen und dem Zusammenspiel verschiedener Rechtsordnungen.</p>
+  <div class="jur-g">
+    <div class="ji a d1"><div class="jf"><svg viewBox="0 0 48 32"><rect width="48" height="32" fill="#003399"/><circle cx="24" cy="16" r="8" fill="#FFCC00"/><circle cx="24" cy="16" r="6" fill="#003399"/></svg></div><h4>Europäische Union</h4><p>EU-Recht &amp; Regulierung</p></div>
+    <div class="ji a d2"><div class="jf"><svg viewBox="0 0 48 32"><rect width="48" height="32" fill="#012169"/><path d="M0 0l48 32M48 0L0 32" stroke="#fff" stroke-width="5"/><path d="M0 0l48 32M48 0L0 32" stroke="#C8102E" stroke-width="3"/><path d="M24 0v32M0 16h48" stroke="#fff" stroke-width="8"/><path d="M24 0v32M0 16h48" stroke="#C8102E" stroke-width="5"/></svg></div><h4>Vereinigtes Königreich</h4><p>Solicitor of England and Wales</p></div>
+    <div class="ji a d3"><div class="jf"><svg viewBox="0 0 48 32"><rect width="48" height="32" fill="#0D5EAF"/><rect y="3.56" width="48" height="3.56" fill="#fff"/><rect y="10.67" width="48" height="3.56" fill="#fff"/><rect y="17.78" width="48" height="3.56" fill="#fff"/><rect y="24.89" width="48" height="3.56" fill="#fff"/><rect width="19.2" height="17.78" fill="#0D5EAF"/></svg></div><h4>Griechenland</h4><p>Rechtsanwaltskammer Piräus</p></div>
+  </div>
+  <span class="lbl a">Arbeitssprachen</span>
+  <div class="lng-r" style="margin-top:1.5rem">
+    <div class="li a d1"><div class="lng-c">De</div><span>Deutsch</span></div>
+    <div class="li a d2"><div class="lng-c">En</div><span>Englisch</span></div>
+    <div class="li a d3"><div class="lng-c">Ελ</div><span>Griechisch</span></div>
+  </div>
+</section>
+
+<section class="s-qual" id="qualifications">
+  <div class="sh"><span class="lbl a">Qualifikationen</span><h2 class="a">Zulassungen &amp; Akademischer Werdegang</h2><div class="div div-c a"></div></div>
+  <div class="qual-g">
+    <div class="qcol a d1">
+      <h3>Anwaltszulassungen</h3>
+      <div class="qi"><div class="qt">Solicitor of England and Wales</div><div class="qd">Solicitors Regulation Authority (SRA)</div></div>
+      <div class="qi"><div class="qt">Δικηγόρος, Rechtsanwältin</div><div class="qd">Rechtsanwaltskammer Piräus</div></div>
+      <div class="qi"><div class="qt">Europäische Rechtsanwältin (§ 1 EuRAG)</div><div class="qd">Rechtsanwaltskammer Frankfurt am Main</div></div>
+    </div>
+    <div class="qcol a d2">
+      <h3>Akademische Abschlüsse</h3>
+      <div class="qi"><div class="qt">Πτυχίο Νομικής, Staatsexamen Recht</div><div class="qd">Nationale &amp; Kapodistrische Universität Athen</div></div>
+      <div class="qi"><div class="qt">LL.M. in Unternehmensrecht</div><div class="qd">Universität Mannheim</div></div>
+      <div class="qi"><div class="qt">LL.M. in International Financial and Commercial Law</div><div class="qd">King's College London</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="s-ins" id="insights">
+  <div class="sh"><div><span class="lbl a">Insights</span><h2 class="a">Aktuelle Fachbeiträge</h2></div><a href="/insights" class="cta a">Alle Beiträge <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  <div class="ins-g">
+    <div class="ic a d1"><div class="cd">Januar 2026</div><span class="ct">EU AI Act</span><h3>Die Risikoklassifikation des EU AI Act – Ein Überblick</h3><p>Welche KI-Systeme fallen unter welche Risikokategorie? Eine Einordnung der zentralen Pflichten.</p><a href="#" class="cl">Weiterlesen <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+    <div class="ic a d2"><div class="cd">Dezember 2025</div><span class="ct">Datenschutz</span><h3>Internationale Datentransfers nach Schrems II</h3><p>Aktuelle Anforderungen an den Transfer personenbezogener Daten in Drittstaaten.</p><a href="#" class="cl">Weiterlesen <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+    <div class="ic a d3"><div class="cd">November 2025</div><span class="ct">Cross-Border</span><h3>Vorsorgevollmacht mit internationalem Bezug</h3><p>Worauf bei grenzüberschreitenden Vorsorgedokumenten zu achten ist.</p><a href="#" class="cl">Weiterlesen <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+
+<section class="s-con" id="contact">
+  <div class="con-g">
+    <div class="con-i">
+      <span class="lbl a">Kontakt</span>
+      <h2 class="a">Sprechen wir über<br>Ihr Anliegen</h2>
+      <div class="div a"></div>
+      <div class="cdet a d1"><div class="cdet-l">Telefon</div><div class="cdet-v"><a href="tel:+4969966938465">+49 69 966 938 465</a></div></div>
+      <div class="cdet a d2"><div class="cdet-l">E-Mail</div><div class="cdet-v"><a href="mailto:office@eiriniclika.com">office@eiriniclika.com</a></div></div>
+      <div class="cdet a d3"><div class="cdet-l">Standort</div><div class="cdet-v">Frankfurt am Main</div></div>
+      <div class="cdet a d4"><div class="cdet-l">Arbeitszeiten</div><div class="cdet-v">Montag – Freitag, nach Vereinbarung</div></div>
+    </div>
+    <div class="con-f">
+      <span class="lbl a">Schreiben Sie mir</span>
+      <h3 class="a">Kontaktformular</h3>
+      <p class="fdesc a">Für eine erste Kontaktaufnahme senden Sie mir Ihr Anliegen. Ich melde mich zeitnah bei Ihnen zurück.</p>
+      <form class="cf a d1" onsubmit="return false;">
+        <div class="fr"><div class="ff"><label>Name</label><input type="text" placeholder="Vor- und Nachname"></div><div class="ff"><label>E-Mail</label><input type="email" placeholder="ihre@email.de"></div></div>
+        <div class="ff"><label>Betreff</label><input type="text" placeholder="Ihr Anliegen"></div>
+        <div class="ff"><label>Nachricht</label><textarea placeholder="Beschreiben Sie kurz Ihr Anliegen…"></textarea></div>
+        <button type="submit" class="fsub">Nachricht senden</button>
+        <p class="fnote">Ihre Daten werden vertraulich behandelt. Details unter <a href="/privacy-policy">Datenschutzerklärung</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div class="ft-br"><img src="images/ecl-logo-transparent-light.png" alt="Eirini C. Lika LL.M"><p>Internationale Rechtsberatung in den Bereichen KI-Regulierung, Datenschutz und grenzüberschreitende Mandate.</p></div>
+      <div class="ft-nav">
+        <div class="ft-col"><h5>Kanzlei</h5><a href="/about">Über die Kanzlei</a><a href="/services">Tätigkeitsbereiche</a><a href="/insights">Insights</a><a href="/contact">Kontakt</a></div>
+        <div class="ft-col"><h5>Rechtliches</h5><a href="/legal-notice">Impressum</a><a href="/privacy-policy">Datenschutzerklärung</a><a href="/disclaimer">Haftungshinweis</a><a href="/professional-admissions">Berufliche Zulassungen</a></div>
+      </div>
+    </div>
+    <div class="ft-bot"><p>&copy; 2026 Eirini C. Lika LL.M – Alle Rechte vorbehalten</p><p>Europäische Rechtsanwältin (§ 1 EuRAG) · Solicitor of England and Wales · Δικηγόρος</p></div>
+  </div>
+</footer>
+
+<button class="ds-t" id="dsToggle" title="Design System"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+<div class="ds-p" id="dsPanel">
+  <div class="ds-ph"><h4>Design System</h4><button class="ds-pc" id="dsPanelClose">&times;</button></div>
+  <div class="ds-pb">
+    <div class="ds-s"><h5>Hintergrund</h5><div class="mt"><button class="mb active" data-mode="dark">☾ Dunkel</button><button class="mb" data-mode="light">☀ Hell</button></div></div>
+    <div class="ds-s"><h5>Farbakzent</h5><div class="to">
+      <button class="tb active" data-theme="navy-gold"><div class="td"><div class="tdt" style="background:#0a1628"></div><div class="tdt" style="background:#a39541"></div><div class="tdt" style="background:#f5f0e8"></div></div><span class="tl">Navy & Gold</span><span class="tc">✓</span></button>
+      <button class="tb" data-theme="olive-black"><div class="td"><div class="tdt" style="background:#111"></div><div class="tdt" style="background:#6B705C"></div><div class="tdt" style="background:#f4f2ed"></div></div><span class="tl">Olive & Schwarz</span><span class="tc">✓</span></button>
+      <button class="tb" data-theme="navy-olive"><div class="td"><div class="tdt" style="background:#0a1628"></div><div class="tdt" style="background:#5E6B2F"></div><div class="tdt" style="background:#f4f2ed"></div></div><span class="tl">Navy & Olive</span><span class="tc">✓</span></button>
+    </div></div>
+    <div class="ds-s" id="dsColors"></div>
+    <div class="ds-s"><h5>Typografie</h5><div class="dtr"><div style="font-family:var(--fh);font-size:1.6rem;color:#fff;font-style:italic">Cormorant Garamond</div><div class="dtm">Headlines · Serif · italic H2</div></div><div class="dtr" style="margin-top:10px"><div style="font-family:var(--fb);font-size:1rem;color:rgba(255,255,255,.7)">Outfit — Body & UI</div><div class="dtm">Body · Sans-Serif · Labels</div></div></div>
+  </div>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+
+const heroImage=document.getElementById('heroImage'),heroImg=document.getElementById('heroImg');
+if(heroImage&&heroImg){
+  heroImage.addEventListener('mousemove',e=>{
+    const r=heroImage.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    heroImg.style.transform='scale(1.05) translate('+x*-8+'px,'+y*-8+'px)';
+  });
+  heroImage.addEventListener('mouseleave',()=>{heroImg.style.transform='scale(1.05) translate(0,0)'});
+}
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')});
+},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.a:not(.v)').forEach(el=>obs.observe(el));
+
+document.getElementById('dsPanelClose').addEventListener('click',()=>document.getElementById('dsPanel').classList.remove('open'));
+document.getElementById('dsToggle').addEventListener('click',()=>document.getElementById('dsPanel').classList.toggle('open'));
+
+const themes={'navy-gold':{dark:'#0a1628',sec:'#132240',accent:'#a39541',light:'#f5f0e8'},'olive-black':{dark:'#111111',sec:'#1a1a1a',accent:'#6B705C',light:'#f4f2ed'},'navy-olive':{dark:'#0a1628',sec:'#132240',accent:'#5E6B2F',light:'#f4f2ed'}};
+
+function apply(){
+  var theme=document.body.dataset.theme,mode=document.body.dataset.mode;
+  document.querySelectorAll('.tb').forEach(function(b){b.classList.toggle('active',b.dataset.theme===theme)});
+  document.querySelectorAll('.mb').forEach(function(b){b.classList.toggle('active',b.dataset.mode===mode)});
+  var t=themes[theme],isLight=mode==='light';
+  var colors=[{name:'Hero',value:isLight?t.light:t.dark,color:isLight?t.light:t.dark},{name:'Services',value:isLight?t.dark:t.sec,color:isLight?t.dark:t.sec},{name:'Accent',value:t.accent,color:t.accent},{name:'Light',value:isLight?'#fff':t.light,color:isLight?'#fff':t.light}];
+  document.getElementById('dsColors').innerHTML='<h5>Aktive Farben</h5>'+colors.map(function(c){return '<div class="dcr"><div class="dcs" style="background:'+c.color+'"></div><div class="dci"><span class="dcn">'+c.name+'</span><span class="dcv">'+c.value+'</span></div></div>'}).join('');
+}
+document.querySelectorAll('.tb').forEach(function(btn){btn.addEventListener('click',function(){document.body.dataset.theme=btn.dataset.theme;apply()})});
+document.querySelectorAll('.mb').forEach(function(btn){btn.addEventListener('click',function(){document.body.dataset.mode=btn.dataset.mode;apply()})});
+apply();
+</script>
+</body>
+</html>
