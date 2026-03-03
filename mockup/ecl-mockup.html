@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eirini C. Lika LL.M — Homepage Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   DESIGN TOKENS — 3 palettes × 2 modes
+   ============================================= */
+
+/* --- NAVY & GOLD (Klassisch-Autoritär) --- */
+[data-theme="navy-gold"][data-mode="dark"]{
+  --bg-hero:#0F1B33;--bg-section-a:#0F1B33;--bg-section-b:#162544;--bg-section-light:#F7F3F1;--bg-section-light-alt:#EDE8E2;
+  --accent:#C5A47E;--accent-light:#D4B896;--accent-muted:rgba(197,164,126,0.25);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(15,27,51,0.95);--nav-text:rgba(247,243,241,0.7);--nav-text-hover:#F7F3F1;
+  --hero-text:#F7F3F1;--hero-text-sub:rgba(247,243,241,0.7);
+  --on-dark:#F7F3F1;--on-dark-sub:rgba(247,243,241,0.7);--on-dark-muted:rgba(247,243,241,0.45);
+  --on-light:#1a1a1a;--on-light-sub:#555;
+  --border-dark:rgba(247,243,241,0.08);--border-light:rgba(197,164,126,0.25);
+  --footer-bg:#0a1222;--card-bg:#162544;--card-border:rgba(247,243,241,0.08);
+  --insight-bg:#0F1B33;
+}
+[data-theme="navy-gold"][data-mode="light"]{
+  --bg-hero:#F7F3F1;--bg-section-a:#F7F3F1;--bg-section-b:#0F1B33;--bg-section-light:#fff;--bg-section-light-alt:#F7F3F1;
+  --accent:#C5A47E;--accent-light:#A8885F;--accent-muted:rgba(197,164,126,0.2);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(247,243,241,0.95);--nav-text:#333;--nav-text-hover:#0F1B33;
+  --hero-text:#0F1B33;--hero-text-sub:#555;
+  --on-dark:#F7F3F1;--on-dark-sub:rgba(247,243,241,0.7);--on-dark-muted:rgba(247,243,241,0.45);
+  --on-light:#1a1a1a;--on-light-sub:#555;
+  --border-dark:rgba(247,243,241,0.08);--border-light:rgba(197,164,126,0.25);
+  --footer-bg:#0a1222;--card-bg:#162544;--card-border:rgba(247,243,241,0.08);
+  --insight-bg:#f3eeea;
+}
+
+/* --- CHARCOAL & TEAL (Tech-Forward) --- */
+[data-theme="charcoal-teal"][data-mode="dark"]{
+  --bg-hero:#0D0D1A;--bg-section-a:#0D0D1A;--bg-section-b:#1A1A2E;--bg-section-light:#F5F5F7;--bg-section-light-alt:#E8E8ED;
+  --accent:#49C5B6;--accent-light:#6AD4C8;--accent-muted:rgba(73,197,182,0.2);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(13,13,26,0.95);--nav-text:rgba(245,245,247,0.7);--nav-text-hover:#F5F5F7;
+  --hero-text:#F5F5F7;--hero-text-sub:rgba(245,245,247,0.7);
+  --on-dark:#F5F5F7;--on-dark-sub:rgba(245,245,247,0.7);--on-dark-muted:rgba(245,245,247,0.45);
+  --on-light:#141414;--on-light-sub:#4A4A68;
+  --border-dark:rgba(245,245,247,0.08);--border-light:rgba(73,197,182,0.25);
+  --footer-bg:#08081A;--card-bg:#1A1A2E;--card-border:rgba(245,245,247,0.08);
+  --insight-bg:#0D0D1A;
+}
+[data-theme="charcoal-teal"][data-mode="light"]{
+  --bg-hero:#F5F5F7;--bg-section-a:#F5F5F7;--bg-section-b:#0D0D1A;--bg-section-light:#fff;--bg-section-light-alt:#F5F5F7;
+  --accent:#49C5B6;--accent-light:#2DA89A;--accent-muted:rgba(73,197,182,0.15);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(245,245,247,0.95);--nav-text:#1A1A2E;--nav-text-hover:#0D0D1A;
+  --hero-text:#0D0D1A;--hero-text-sub:#4A4A68;
+  --on-dark:#F5F5F7;--on-dark-sub:rgba(245,245,247,0.7);--on-dark-muted:rgba(245,245,247,0.45);
+  --on-light:#141414;--on-light-sub:#4A4A68;
+  --border-dark:rgba(245,245,247,0.08);--border-light:rgba(73,197,182,0.25);
+  --footer-bg:#08081A;--card-bg:#1A1A2E;--card-border:rgba(245,245,247,0.08);
+  --insight-bg:#ededf2;
+}
+
+/* --- OFF-BLACK & COPPER (Boutique-Luxus) --- */
+[data-theme="offblack-copper"][data-mode="dark"]{
+  --bg-hero:#1C1C1E;--bg-section-a:#1C1C1E;--bg-section-b:#2C2C2E;--bg-section-light:#FAF5EF;--bg-section-light-alt:#F0E8DD;
+  --accent:#B87333;--accent-light:#CA8A4E;--accent-muted:rgba(184,115,51,0.25);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(28,28,30,0.95);--nav-text:rgba(250,245,239,0.7);--nav-text-hover:#FAF5EF;
+  --hero-text:#FAF5EF;--hero-text-sub:rgba(250,245,239,0.7);
+  --on-dark:#FAF5EF;--on-dark-sub:rgba(250,245,239,0.7);--on-dark-muted:rgba(250,245,239,0.45);
+  --on-light:#1C1C1E;--on-light-sub:#5a5a5a;
+  --border-dark:rgba(250,245,239,0.08);--border-light:rgba(184,115,51,0.25);
+  --footer-bg:#141415;--card-bg:#2C2C2E;--card-border:rgba(250,245,239,0.08);
+  --insight-bg:#1C1C1E;
+}
+[data-theme="offblack-copper"][data-mode="light"]{
+  --bg-hero:#FAF5EF;--bg-section-a:#FAF5EF;--bg-section-b:#1C1C1E;--bg-section-light:#fff;--bg-section-light-alt:#FAF5EF;
+  --accent:#B87333;--accent-light:#9A5E28;--accent-muted:rgba(184,115,51,0.15);
+  --nav-bg:transparent;--nav-bg-scroll:rgba(250,245,239,0.95);--nav-text:#1C1C1E;--nav-text-hover:#000;
+  --hero-text:#1C1C1E;--hero-text-sub:#5a5a5a;
+  --on-dark:#FAF5EF;--on-dark-sub:rgba(250,245,239,0.7);--on-dark-muted:rgba(250,245,239,0.45);
+  --on-light:#1C1C1E;--on-light-sub:#5a5a5a;
+  --border-dark:rgba(250,245,239,0.08);--border-light:rgba(184,115,51,0.25);
+  --footer-bg:#141415;--card-bg:#2C2C2E;--card-border:rgba(250,245,239,0.08);
+  --insight-bg:#f5efe6;
+}
+
+/* =============================================
+   FONT SYSTEM
+   ============================================= */
+[data-font="playfair-dmsans"]{--font-heading:'Playfair Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;--heading-style:normal}
+[data-font="syne-dmsans"]{--font-heading:'Syne',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--heading-style:normal}
+[data-font="cormorant-jakarta"]{--font-heading:'Cormorant Garamond',Georgia,serif;--font-body:'Plus Jakarta Sans',system-ui,sans-serif;--heading-style:italic}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--font-body);color:var(--hero-text);line-height:1.6;overflow-x:hidden;transition:background 0.5s ease, color 0.5s ease}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);transition:background 0.4s,padding 0.4s,backdrop-filter 0.4s}
+.nav.scrolled{padding:14px 48px;background:var(--nav-bg-scroll);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-mark{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-style:var(--heading-style);font-size:14px;font-weight:600;color:var(--accent);letter-spacing:0.02em}
+.nav-logo-text{font-family:var(--font-heading);font-style:var(--heading-style);font-size:1rem;font-weight:500;color:var(--hero-text);letter-spacing:0.02em}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--font-body);font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--nav-text);transition:color 0.3s}
+.nav-links a:hover{color:var(--nav-text-hover)}
+.nav-cta{padding:10px 24px;border:1px solid var(--accent);border-radius:4px;font-family:var(--font-body);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);transition:all 0.3s}
+.nav-cta:hover{background:var(--accent);color:var(--bg-hero)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:var(--hero-text);transition:all 0.3s}
+.mobile-menu{display:none}
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero{min-height:100vh;display:flex;align-items:center;background:var(--bg-hero);position:relative;overflow:hidden;padding:120px 48px 80px}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border-dark) 1px,transparent 1px),linear-gradient(90deg,var(--border-dark) 1px,transparent 1px);background-size:80px 80px;opacity:0.5}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:0.12;transition:transform 0.15s ease-out}
+.hero-glow-1{top:-200px;right:-100px;background:var(--accent)}
+.hero-glow-2{bottom:-300px;left:-200px;background:var(--accent);opacity:0.06}
+.hero-float{position:absolute;border-radius:50%;border:1px solid var(--accent-muted);animation:float1 12s ease-in-out infinite}
+.hero-float-1{width:200px;height:200px;top:15%;right:10%;animation-delay:-2s}
+.hero-float-2{width:120px;height:120px;bottom:20%;right:25%;animation-delay:-6s;animation-duration:16s}
+.hero-float-3{width:80px;height:80px;top:40%;left:5%;animation-delay:-4s;animation-duration:20s}
+@keyframes float1{0%,100%{transform:translate(0,0)}25%{transform:translate(-15px,20px)}50%{transform:translate(10px,-15px)}75%{transform:translate(-8px,-10px)}}
+
+.hero-content{position:relative;z-index:2;max-width:780px}
+.hero-label{font-family:var(--font-body);font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-label::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--font-heading);font-style:var(--heading-style);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:500;line-height:1.15;letter-spacing:-0.02em;color:var(--hero-text);margin-bottom:28px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:1.05rem;line-height:1.7;color:var(--hero-text-sub);max-width:600px;margin-bottom:40px}
+.hero-badges{display:flex;gap:16px;flex-wrap:wrap}
+.hero-badge{display:flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--border-dark);border-radius:40px;font-size:0.78rem;font-weight:500;color:var(--on-dark-sub);background:rgba(255,255,255,0.03);backdrop-filter:blur(4px)}
+.hero-badge-flag{font-size:1rem}
+
+/* =============================================
+   SECTIONS
+   ============================================= */
+.section{padding:100px 48px}
+.section-light{background:var(--bg-section-light);color:var(--on-light)}
+.section-light-alt{background:var(--bg-section-light-alt);color:var(--on-light)}
+.section-dark{background:var(--bg-section-b);color:var(--on-dark)}
+.section-label{font-family:var(--font-body);font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-title{font-family:var(--font-heading);font-style:var(--heading-style);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500;line-height:1.2;letter-spacing:-0.015em;margin-bottom:24px}
+.section-sub{font-size:0.95rem;line-height:1.7;max-width:600px}
+.section-sub.on-light{color:var(--on-light-sub)}
+.section-sub.on-dark{color:var(--on-dark-sub)}
+
+/* =============================================
+   ABOUT (2-col)
+   ============================================= */
+.about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:64px;align-items:start;max-width:1200px;margin:0 auto}
+.about-text p{font-size:1rem;line-height:1.8;color:var(--on-light-sub);margin-bottom:20px}
+.about-link{display:inline-flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-top:8px;transition:gap 0.3s}
+.about-link:hover{gap:14px}
+.about-link::after{content:'→'}
+.qual-box{background:var(--bg-section-light-alt);border:1px solid var(--border-light);border-radius:12px;padding:32px}
+.qual-box h4{font-family:var(--font-heading);font-style:var(--heading-style);font-size:1rem;font-weight:600;color:var(--on-light);margin-bottom:20px;letter-spacing:0.02em}
+.qual-item{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:0.85rem;color:var(--on-light-sub)}
+.qual-item:last-child{border-bottom:none}
+.qual-item .qual-icon{color:var(--accent);font-size:0.75rem;flex-shrink:0}
+
+/* =============================================
+   PRACTICE AREAS
+   ============================================= */
+.practices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px;margin:40px auto 0}
+.practice-card{padding:32px;border:1px solid var(--card-border);border-radius:12px;background:var(--card-bg);transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);cursor:pointer;text-decoration:none;display:block}
+.practice-card:hover{transform:translateY(-4px);border-color:var(--accent-muted);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+.practice-num{font-family:var(--font-body);font-size:0.7rem;font-weight:600;letter-spacing:0.15em;color:var(--accent);margin-bottom:16px}
+.practice-card h3{font-family:var(--font-heading);font-style:var(--heading-style);font-size:1.15rem;font-weight:500;color:var(--on-dark);margin-bottom:12px;letter-spacing:-0.01em;line-height:1.3}
+.practice-card p{font-size:0.85rem;line-height:1.6;color:var(--on-dark-sub);margin-bottom:16px}
+.practice-more{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:6px;transition:gap 0.3s}
+.practice-card:hover .practice-more{gap:12px}
+.practice-more::after{content:'→'}
+
+/* =============================================
+   JURISDICTIONS
+   ============================================= */
+.jurisd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1000px;margin:48px auto 0}
+.jurisd-card{text-align:center;padding:40px 24px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-dark)}
+.jurisd-flag{font-size:2rem;margin-bottom:12px}
+.jurisd-card h4{font-family:var(--font-heading);font-style:var(--heading-style);font-size:1.1rem;font-weight:500;color:var(--on-dark);margin-bottom:8px}
+.jurisd-card p{font-size:0.82rem;color:var(--on-dark-sub)}
+.lang-row{display:flex;justify-content:center;gap:24px;margin-top:48px}
+.lang-pill{display:flex;align-items:center;gap:10px;padding:10px 20px;border:1px solid var(--border-dark);border-radius:40px;font-size:0.85rem;color:var(--on-dark-sub)}
+.lang-code{font-family:var(--font-heading);font-style:var(--heading-style);font-size:0.9rem;font-weight:600;color:var(--accent)}
+
+/* =============================================
+   FEATURE / DIFFERENTIATORS
+   ============================================= */
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1100px;margin:48px auto 0}
+.diff-item h4{font-family:var(--font-heading);font-style:var(--heading-style);font-size:1.15rem;font-weight:500;color:var(--on-dark);margin-bottom:12px}
+.diff-item p{font-size:0.88rem;line-height:1.7;color:var(--on-dark-sub)}
+.diff-num{font-size:2rem;font-weight:300;color:var(--accent);margin-bottom:12px;font-family:var(--font-heading);font-style:var(--heading-style);opacity:0.6}
+
+/* =============================================
+   CTA
+   ============================================= */
+.cta-section{text-align:center;max-width:700px;margin:0 auto}
+.cta-buttons{display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.btn-primary{padding:14px 32px;background:var(--accent);color:var(--bg-hero);border-radius:4px;font-family:var(--font-body);font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.3s;border:1px solid var(--accent)}
+.btn-primary:hover{opacity:0.85;transform:translateY(-1px)}
+.btn-secondary{padding:14px 32px;background:transparent;color:var(--on-light);border:1px solid rgba(0,0,0,0.2);border-radius:4px;font-family:var(--font-body);font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.3s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer{background:var(--footer-bg);color:var(--on-dark);padding:64px 48px 32px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto}
+.footer-brand p{font-size:0.82rem;color:var(--on-dark-sub);line-height:1.7;margin-top:16px;max-width:280px}
+.footer h5{font-family:var(--font-body);font-size:0.68rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--on-dark-muted);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:0.85rem;color:var(--on-dark-sub);transition:color 0.3s}
+.footer-links a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--border-dark);margin-top:48px;padding-top:24px;max-width:1200px;margin-left:auto;margin-right:auto}
+.footer-bottom p{font-size:0.75rem;color:var(--on-dark-muted);line-height:1.6}
+
+/* =============================================
+   DESIGN SYSTEM PANEL
+   ============================================= */
+.ds-toggle{position:fixed;bottom:24px;right:24px;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.2s}
+.ds-toggle:hover{transform:scale(1.1)}
+.ds-toggle svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2}
+
+.ds-panel{position:fixed;bottom:88px;right:24px;z-index:200;width:380px;max-height:80vh;background:#0e1a2e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,0.5);overflow:hidden;transform:translateY(16px) scale(0.95);opacity:0;pointer-events:none;transition:transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s}
+.ds-panel.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+.ds-panel-header{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+.ds-panel-header h4{font-family:var(--font-body);font-size:0.8rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#fff}
+.ds-panel-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.5);font-size:1.4rem;padding:4px;line-height:1}
+.ds-panel-body{padding:20px;overflow-y:auto;max-height:calc(80vh - 60px)}
+
+/* Mode Toggle */
+.mode-toggle-wrap{margin-bottom:20px}
+.mode-toggle-wrap h5,.theme-switcher h5,.font-switcher h5,.ds-section h5{font-family:'DM Sans',system-ui,sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:10px}
+.mode-toggle{display:flex;background:rgba(255,255,255,0.05);border-radius:8px;padding:3px;gap:2px}
+.mode-btn{flex:1;padding:8px 12px;border:none;border-radius:6px;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;color:rgba(255,255,255,0.6);background:transparent;transition:all 0.25s}
+.mode-btn.active{background:rgba(255,255,255,0.12);color:#fff}
+.mode-btn:hover:not(.active){background:rgba(255,255,255,0.06)}
+
+/* Theme switcher */
+.theme-switcher{margin-bottom:20px}
+.theme-options{display:flex;flex-direction:column;gap:6px}
+.theme-btn{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif}
+.theme-btn:hover,.theme-btn.active{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06)}
+.theme-btn.active .theme-check{opacity:1}
+.theme-check{color:var(--accent);font-size:0.8rem;margin-left:auto;opacity:0;transition:opacity 0.2s}
+.theme-dots{display:flex;gap:4px}
+.theme-dot{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,0.15)}
+.theme-btn-label{font-size:0.8rem;color:rgba(255,255,255,0.7)}
+
+/* Font Switcher */
+.font-switcher{margin-bottom:20px}
+.font-options{display:flex;flex-direction:column;gap:6px}
+.font-btn{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif}
+.font-btn:hover,.font-btn.active{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06)}
+.font-btn.active .theme-check{opacity:1}
+.font-preview{display:flex;align-items:baseline;gap:6px}
+.font-preview-heading{font-size:1.05rem;color:#fff;line-height:1}
+.font-preview-body{font-size:0.75rem;color:rgba(255,255,255,0.6)}
+.font-btn-desc{font-size:0.65rem;color:rgba(255,255,255,0.35);margin-left:auto;margin-right:8px}
+
+/* Color display */
+.ds-section{margin-bottom:20px}
+.ds-color-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ds-color-swatch{width:28px;height:28px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);flex-shrink:0}
+.ds-color-info{display:flex;justify-content:space-between;flex:1}
+.ds-color-name{font-size:0.75rem;color:rgba(255,255,255,0.7)}
+.ds-color-value{font-size:0.7rem;color:rgba(255,255,255,0.4);font-family:monospace}
+.ds-type-row{margin-bottom:8px}
+.ds-type-meta{font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:monospace}
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.animate{opacity:0}
+.animate.visible{animation:fadeInUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) forwards}
+.animate.delay-1{animation-delay:0.1s}.animate.delay-2{animation-delay:0.2s}.animate.delay-3{animation-delay:0.3s}
+.animate.delay-4{animation-delay:0.35s}.animate.delay-5{animation-delay:0.45s}.animate.delay-6{animation-delay:0.55s}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media(max-width:900px){
+  .nav{padding:16px 24px}
+  .nav.scrolled{padding:12px 24px}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg-hero);flex-direction:column;align-items:center;justify-content:center;gap:32px}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{font-family:var(--font-heading);font-style:var(--heading-style);font-size:1.5rem;color:var(--hero-text)}
+  .hero{padding:100px 24px 60px}
+  .hero h1{font-size:clamp(2rem,6vw,2.8rem)}
+  .section{padding:64px 24px}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .practices-grid{grid-template-columns:1fr}
+  .jurisd-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer{padding:48px 24px 24px}
+  .ds-panel{width:calc(100vw - 32px);right:16px;bottom:80px}
+  .lang-row{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body data-theme="navy-gold" data-mode="dark" data-font="playfair-dmsans">
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">ECL</div>
+    <span class="nav-logo-text">Eirini C. Lika LL.M</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/about">Kanzlei</a></li>
+    <li><a href="/services">Tätigkeitsbereiche</a></li>
+    <li><a href="/insights">Insights</a></li>
+  </ul>
+  <a href="/contact" class="nav-cta">Kontakt</a>
+  <button class="hamburger" id="navHamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/about">Kanzlei</a>
+  <a href="/services">Tätigkeitsbereiche</a>
+  <a href="/insights">Insights</a>
+  <a href="/contact">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow hero-glow-1" id="heroGlow1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-float hero-float-1"></div>
+    <div class="hero-float hero-float-2"></div>
+    <div class="hero-float hero-float-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-label animate visible">International Boutique Law Practice</div>
+    <h1 class="animate visible delay-1">Rechtsberatung an der<br><em>Schnittstelle</em> der Rechtsordnungen</h1>
+    <p class="hero-sub animate visible delay-2">Internationale Rechtsberatung in den Bereichen KI-Regulierung, Datenschutz und grenzüberschreitende Mandate in der Europäischen Union, dem Vereinigten Königreich und Griechenland.</p>
+    <div class="hero-badges animate visible delay-3">
+      <span class="hero-badge"><span class="hero-badge-flag">🇪🇺</span> EU-Recht & Regulierung</span>
+      <span class="hero-badge"><span class="hero-badge-flag">🇬🇧</span> Solicitor (E&W)</span>
+      <span class="hero-badge"><span class="hero-badge-flag">🇬🇷</span> Δικηγόρος</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / PRACTICE OVERVIEW -->
+<section class="section section-light">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-label animate">Über die Kanzlei</div>
+      <h2 class="section-title animate delay-1" style="color:var(--on-light)">Wer ich bin</h2>
+      <p class="animate delay-2">Ich bin Eirini C. Lika, LL.M. Ich berate an der Schnittstelle von deutschem, europäischem, britischem und griechischem Recht. Unternehmen begleite ich bei internationalen Vertragsstrukturen und regulatorischer Compliance.</p>
+      <p class="animate delay-2">Ein besonderer Schwerpunkt liegt im Bereich des KI-Rechts und der Tech-Regulierung — von der Risikoklassifikation nach dem EU AI Act bis zur Gestaltung grenzüberschreitender Compliance-Strukturen.</p>
+      <a href="/about" class="about-link animate delay-3">Mehr erfahren</a>
+    </div>
+    <div class="qual-box animate delay-2">
+      <h4>Qualifikationen</h4>
+      <div class="qual-item"><span class="qual-icon">◆</span> Solicitor of England and Wales</div>
+      <div class="qual-item"><span class="qual-icon">◆</span> Δικηγόρος — Rechtsanwaltskammer Piräus</div>
+      <div class="qual-item"><span class="qual-icon">◆</span> Europäische Rechtsanwältin (§ 1 EuRAG)</div>
+      <div class="qual-item"><span class="qual-icon">◆</span> LL.M. International Commercial Law</div>
+      <div class="qual-item"><span class="qual-icon">◆</span> LL.M. Europäisches & Internationales Wirtschaftsrecht</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section class="section section-dark">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-label animate">Tätigkeitsschwerpunkte</div>
+    <h2 class="section-title animate delay-1">Rechtsberatung mit internationalem Fokus</h2>
+  </div>
+  <div class="practices-grid">
+    <a href="/services/ai-law-eu-ai-act" class="practice-card animate delay-1">
+      <div class="practice-num">01</div>
+      <h3>KI-Recht & EU AI Act</h3>
+      <p>Regulatorische Einordnung, Risikoklassifikation und Compliance-Beratung nach dem EU AI Act.</p>
+      <span class="practice-more">Mehr erfahren</span>
+    </a>
+    <a href="/services/data-protection-it-law" class="practice-card animate delay-2">
+      <div class="practice-num">02</div>
+      <h3>Datenschutz & IT-Recht</h3>
+      <p>DSGVO-Compliance, internationale Datentransfers und IT-rechtliche Vertragsgestaltung.</p>
+      <span class="practice-more">Mehr erfahren</span>
+    </a>
+    <a href="/services/corporate-commercial-law" class="practice-card animate delay-3">
+      <div class="practice-num">03</div>
+      <h3>Gesellschafts- & Wirtschaftsrecht</h3>
+      <p>Grenzüberschreitende Unternehmensstrukturen und regulatorische Rahmenbedingungen.</p>
+      <span class="practice-more">Mehr erfahren</span>
+    </a>
+    <a href="/services/contract-drafting" class="practice-card animate delay-4">
+      <div class="practice-num">04</div>
+      <h3>Vertragsgestaltung</h3>
+      <p>SaaS-, Lizenz- und grenzüberschreitende Wirtschaftsverträge.</p>
+      <span class="practice-more">Mehr erfahren</span>
+    </a>
+    <a href="/services/cross-border-legal-advisory" class="practice-card animate delay-5">
+      <div class="practice-num">05</div>
+      <h3>Grenzüberschreitende Rechtsberatung</h3>
+      <p>Koordinierte rechtliche Analyse über mehrere Jurisdiktionen hinweg.</p>
+      <span class="practice-more">Mehr erfahren</span>
+    </a>
+    <a href="/services/private-mandates-advance-directives" class="practice-card animate delay-6">
+      <div class="practice-num">06</div>
+      <h3>Private Vorsorge & Patientenverfügungen</h3>
+      <p>Rechtssichere Vorsorgestrukturen mit internationalem Bezug.</p>
+      <span class="practice-more">Mehr erfahren</span>
+    </a>
+  </div>
+</section>
+
+<!-- JURISDICTIONS -->
+<section class="section" style="background:var(--bg-section-a)">
+  <div style="text-align:center;max-width:800px;margin:0 auto">
+    <div class="section-label animate">Rechtsordnungen</div>
+    <h2 class="section-title animate delay-1">Beratung in mehreren Jurisdiktionen</h2>
+    <p class="section-sub on-dark animate delay-2" style="margin:0 auto">Grenzüberschreitend ausgerichtet — unter Berücksichtigung regulatorischer Rahmenbedingungen und dem Zusammenspiel verschiedener Rechtsordnungen.</p>
+  </div>
+  <div class="jurisd-grid">
+    <div class="jurisd-card animate delay-2">
+      <div class="jurisd-flag">🇪🇺</div>
+      <h4>Europäische Union</h4>
+      <p>EU-Recht & Regulierung</p>
+    </div>
+    <div class="jurisd-card animate delay-3">
+      <div class="jurisd-flag">🇬🇧</div>
+      <h4>Vereinigtes Königreich</h4>
+      <p>Solicitor of England and Wales</p>
+    </div>
+    <div class="jurisd-card animate delay-3">
+      <div class="jurisd-flag">🇬🇷</div>
+      <h4>Griechenland</h4>
+      <p>Rechtsanwaltskammer Piräus</p>
+    </div>
+  </div>
+  <div class="lang-row animate delay-3">
+    <span class="lang-pill"><span class="lang-code">De</span> Deutsch</span>
+    <span class="lang-pill"><span class="lang-code">En</span> Englisch</span>
+    <span class="lang-pill"><span class="lang-code">Ελ</span> Griechisch</span>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section class="section section-dark">
+  <div style="text-align:center;max-width:800px;margin:0 auto">
+    <div class="section-label animate">Warum diese Kanzlei</div>
+    <h2 class="section-title animate delay-1">Drei Jurisdiktionen.<br>Ein Ansprechpartner.</h2>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-item animate delay-2">
+      <div class="diff-num">I</div>
+      <h4>Multi-jurisdiktionale Perspektive</h4>
+      <p>Zulassungen in drei Rechtsordnungen ermöglichen eine integrierte Analyse, die nationale Silos überwindet.</p>
+    </div>
+    <div class="diff-item animate delay-3">
+      <div class="diff-num">II</div>
+      <h4>Regulatorische Tiefe</h4>
+      <p>Spezialisierung auf EU AI Act, DSGVO und grenzüberschreitende Regulierung — nicht als Randgebiet, sondern als Kernkompetenz.</p>
+    </div>
+    <div class="diff-item animate delay-3">
+      <div class="diff-num">III</div>
+      <h4>Strukturierte Klarheit</h4>
+      <p>Komplexe regulatorische Sachverhalte werden in handlungsfähige Strukturen überführt — klar, nachvollziehbar, umsetzbar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-light">
+  <div class="cta-section">
+    <div class="section-label animate">Kontakt</div>
+    <h2 class="section-title animate delay-1" style="color:var(--on-light)">Sie haben eine regulatorische Fragestellung?</h2>
+    <p class="section-sub on-light animate delay-2" style="margin:0 auto">Ich freue mich auf Ihre Nachricht. Gemeinsam klären wir, wie ich Sie bei Ihrem Vorhaben unterstützen kann.</p>
+    <div class="cta-buttons animate delay-3">
+      <a href="/contact" class="btn-primary">Kontakt aufnehmen</a>
+      <a href="/services" class="btn-secondary">Tätigkeitsbereiche</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="pointer-events:none">
+        <div class="nav-logo-mark">ECL</div>
+        <span class="nav-logo-text" style="color:var(--on-dark)">Eirini C. Lika LL.M</span>
+      </div>
+      <p>Internationale Rechtsberatung in den Bereichen KI-Regulierung, Datenschutz und grenzüberschreitende Mandate.</p>
+    </div>
+    <div>
+      <h5>Kanzlei</h5>
+      <ul class="footer-links">
+        <li><a href="/about">Über die Kanzlei</a></li>
+        <li><a href="/services">Tätigkeitsbereiche</a></li>
+        <li><a href="/insights">Insights</a></li>
+        <li><a href="/contact">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Rechtliches</h5>
+      <ul class="footer-links">
+        <li><a href="/legal-notice">Impressum</a></li>
+        <li><a href="/privacy-policy">Datenschutzerklärung</a></li>
+        <li><a href="/disclaimer">Haftungshinweis</a></li>
+        <li><a href="/professional-admissions">Berufliche Zulassungen</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Standort</h5>
+      <p style="font-size:0.85rem;color:var(--on-dark-sub);line-height:1.7">Frankfurt am Main<br>Deutschland</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Eirini C. Lika LL.M — Alle Rechte vorbehalten<br>Europäische Rechtsanwältin (§ 1 EuRAG) · Solicitor of England and Wales · Δικηγόρος</p>
+  </div>
+</footer>
+
+<!-- DESIGN SYSTEM PANEL -->
+<button class="ds-toggle" id="dsToggle" title="Design System">
+  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+</button>
+
+<div class="ds-panel" id="dsPanel">
+  <div class="ds-panel-header">
+    <h4>Design System</h4>
+    <button class="ds-panel-close" id="dsPanelClose">&times;</button>
+  </div>
+  <div class="ds-panel-body">
+
+    <!-- Mode Toggle -->
+    <div class="mode-toggle-wrap">
+      <h5>Hintergrund</h5>
+      <div class="mode-toggle">
+        <button class="mode-btn active" data-mode="dark">☾ Dunkel</button>
+        <button class="mode-btn" data-mode="light">☀ Hell</button>
+      </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <h5>Farbschema</h5>
+      <div class="theme-options">
+        <button class="theme-btn active" data-theme="navy-gold">
+          <div class="theme-dots">
+            <div class="theme-dot" style="background:#0F1B33"></div>
+            <div class="theme-dot" style="background:#C5A47E"></div>
+            <div class="theme-dot" style="background:#F7F3F1"></div>
+          </div>
+          <span class="theme-btn-label">Navy & Gold</span>
+          <span class="theme-check">✓</span>
+        </button>
+        <button class="theme-btn" data-theme="charcoal-teal">
+          <div class="theme-dots">
+            <div class="theme-dot" style="background:#0D0D1A"></div>
+            <div class="theme-dot" style="background:#49C5B6"></div>
+            <div class="theme-dot" style="background:#F5F5F7"></div>
+          </div>
+          <span class="theme-btn-label">Charcoal & Teal</span>
+          <span class="theme-check">✓</span>
+        </button>
+        <button class="theme-btn" data-theme="offblack-copper">
+          <div class="theme-dots">
+            <div class="theme-dot" style="background:#1C1C1E"></div>
+            <div class="theme-dot" style="background:#B87333"></div>
+            <div class="theme-dot" style="background:#FAF5EF"></div>
+          </div>
+          <span class="theme-btn-label">Off-Black & Kupfer</span>
+          <span class="theme-check">✓</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Colors -->
+    <div class="ds-section" id="dsColors"></div>
+
+    <!-- Font Switcher -->
+    <div class="font-switcher">
+      <h5>Schriftkombination</h5>
+      <div class="font-options">
+        <button class="font-btn active" data-font="playfair-dmsans">
+          <div class="font-preview">
+            <span class="font-preview-heading" style="font-family:'Playfair Display',serif;font-style:italic">Playfair</span>
+            <span class="font-preview-body" style="font-family:'DM Sans',sans-serif">+ DM Sans</span>
+          </div>
+          <span class="font-btn-desc">Klassisch-autoritär</span>
+          <span class="theme-check">✓</span>
+        </button>
+        <button class="font-btn" data-font="syne-dmsans">
+          <div class="font-preview">
+            <span class="font-preview-heading" style="font-family:'Syne',sans-serif;font-weight:700">Syne</span>
+            <span class="font-preview-body" style="font-family:'DM Sans',sans-serif">+ DM Sans</span>
+          </div>
+          <span class="font-btn-desc">Tech-forward</span>
+          <span class="theme-check">✓</span>
+        </button>
+        <button class="font-btn" data-font="cormorant-jakarta">
+          <div class="font-preview">
+            <span class="font-preview-heading" style="font-family:'Cormorant Garamond',serif;font-style:italic">Garamond</span>
+            <span class="font-preview-body" style="font-family:'Plus Jakarta Sans',sans-serif">+ Jakarta</span>
+          </div>
+          <span class="font-btn-desc">Boutique-elegant</span>
+          <span class="theme-check">✓</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="ds-section" id="dsTypography">
+      <h5>Typografie</h5>
+    </div>
+  </div>
+</div>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+
+// Mobile menu
+const hamburger=document.getElementById('navHamburger'),mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}));
+
+// Kinetic hero (mouse parallax on glows)
+const heroBg=document.getElementById('heroBg');
+const heroGlow1=document.getElementById('heroGlow1');
+if(heroBg&&heroGlow1){
+  document.querySelector('.hero').addEventListener('mousemove',e=>{
+    const r=heroBg.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    heroGlow1.style.transform=`translate(${x*-30}px,${y*-30}px)`;
+  });
+}
+
+// Scroll animations
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.animate:not(.visible)').forEach(el=>obs.observe(el));
+
+// DS Panel
+const dsToggle=document.getElementById('dsToggle');
+const dsPanel=document.getElementById('dsPanel');
+document.getElementById('dsPanelClose').addEventListener('click',()=>dsPanel.classList.remove('open'));
+dsToggle.addEventListener('click',()=>dsPanel.classList.toggle('open'));
+
+// Theme + Mode + Font system
+const themes={
+  'navy-gold':{dark:'#0F1B33',sec:'#162544',accent:'#C5A47E',light:'#F7F3F1'},
+  'charcoal-teal':{dark:'#0D0D1A',sec:'#1A1A2E',accent:'#49C5B6',light:'#F5F5F7'},
+  'offblack-copper':{dark:'#1C1C1E',sec:'#2C2C2E',accent:'#B87333',light:'#FAF5EF'}
+};
+
+const fonts={
+  'playfair-dmsans':{heading:'Playfair Display',headingFull:"'Playfair Display', Georgia, serif",body:'DM Sans',bodyFull:"'DM Sans', system-ui, sans-serif",style:'italic'},
+  'syne-dmsans':{heading:'Syne',headingFull:"'Syne', system-ui, sans-serif",body:'DM Sans',bodyFull:"'DM Sans', system-ui, sans-serif",style:'normal'},
+  'cormorant-jakarta':{heading:'Cormorant Garamond',headingFull:"'Cormorant Garamond', Georgia, serif",body:'Plus Jakarta Sans',bodyFull:"'Plus Jakarta Sans', system-ui, sans-serif",style:'italic'}
+};
+
+function apply(){
+  const theme=document.body.dataset.theme;
+  const mode=document.body.dataset.mode;
+  const font=document.body.dataset.font;
+  // Update active states
+  document.querySelectorAll('.theme-btn').forEach(b=>b.classList.toggle('active',b.dataset.theme===theme));
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+  document.querySelectorAll('.font-btn').forEach(b=>b.classList.toggle('active',b.dataset.font===font));
+  // Update color display
+  const t=themes[theme];
+  const container=document.getElementById('dsColors');
+  const isLight=mode==='light';
+  const colors=[
+    {name:'Hero / Section A',value:isLight?t.light:t.dark,color:isLight?t.light:t.dark},
+    {name:'Services (Dark)',value:isLight?t.dark:t.sec,color:isLight?t.dark:t.sec},
+    {name:'Accent',value:t.accent,color:t.accent},
+    {name:'Light Sections',value:isLight?'#fff':t.light,color:isLight?'#fff':t.light}
+  ];
+  container.innerHTML='<h5>Aktive Farben</h5>'+colors.map(c=>`<div class="ds-color-row"><div class="ds-color-swatch" style="background:${c.color}"></div><div class="ds-color-info"><span class="ds-color-name">${c.name}</span><span class="ds-color-value">${c.value}</span></div></div>`).join('');
+  // Update typography display
+  const f=fonts[font];
+  const typoContainer=document.getElementById('dsTypography');
+  typoContainer.innerHTML=`<h5>Typografie</h5><div class="ds-type-row"><div style="font-family:${f.headingFull};font-size:1.6rem;color:#fff;font-style:${f.style}">${f.heading}</div><div class="ds-type-meta">Headlines · ${f.style==='italic'?'Serif · italic':'Sans-Serif · bold'}</div></div><div class="ds-type-row" style="margin-top:10px"><div style="font-family:${f.bodyFull};font-size:1rem;color:rgba(255,255,255,0.7)">${f.body} — Body & UI</div><div class="ds-type-meta">Body · Sans-Serif · Labels</div></div>`;
+}
+
+document.querySelectorAll('.theme-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{document.body.dataset.theme=btn.dataset.theme;apply();});
+});
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{document.body.dataset.mode=btn.dataset.mode;apply();});
+});
+document.querySelectorAll('.font-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{document.body.dataset.font=btn.dataset.font;apply();});
+});
+
+apply();
+</script>
+</body>
+</html>
